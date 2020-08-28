@@ -3,7 +3,6 @@
 local IsClassic = _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC
 
 local PartyFrame = nil
-local PetsFrame = nil
 local MeFrame = nil
 local DamagersFrame = nil
 local HealersFrame = nil
@@ -14,7 +13,6 @@ local TargetFrame = nil
 local FocusFrame = nil
 
 local PartyFrameWasShown = nil
-local PetsFrameWasShown = nil
 local MeFrameWasShown = nil
 local DamagersFrameWasShown = nil
 local HealersFrameWasShown = nil
@@ -165,24 +163,13 @@ local function UpdateHideCaption(frame)
 	end
 end
 
-local function CreateUnitFrame(FrameName, Caption, IsPet, Group)
+local function CreateUnitFrame(FrameName, Caption, Group)
 	local uf = CreateFrame("Frame", FrameName, UIParent, "HealiumUnitFrameTemplate")
 	table.insert(UnitFrames, uf) 	
 	uf.CaptionBar.Caption:SetText(Caption)
 	UpdateCloseButton(uf)	
 	UpdateHideCaption(uf)
 	return uf
-end
-
-local function CreatePetHeader(FrameName, ParentFrame)
-	local h = CreateHeader("SecureGroupPetHeaderTemplate", FrameName, ParentFrame)
-	h:SetAttribute("filterOnPet", "true")
-	h:SetAttribute("unitsPerColumn", 40) -- allow pets frame to show more than 5	
-	h:SetAttribute("showSolo", "true")	
-	h:SetAttribute("showRaid", "true")	
-	h:SetAttribute("showParty", "true")	
-	h:Show()
-	return h
 end
 
 local function CreateGroupHeader(FrameName, ParentFrame, Group)
@@ -283,12 +270,6 @@ local function CreateTanksUnitFrame(FrameName, Caption)
 	return uf
 end
 
-local function CreatePetUnitFrame(FrameName, Caption)
-	local uf = CreateUnitFrame(FrameName, Caption)
-	local h = CreatePetHeader(FrameName .. "_Header", uf)
-	return uf
-end
-
 local function CreateMeUnitFrame(FrameName, Caption)
 	local uf = CreateUnitFrame(FrameName, Caption)
 	local h = CreateMeHeader(FrameName .. "_Header", uf)
@@ -365,12 +346,6 @@ function HealiumUnitFrames_ShowHideFrame(frame, show)
 	if frame == PartyFrame then
 		Healium.ShowPartyFrame = show
 		Healium_ShowPartyCheck:SetChecked(Healium.ShowPartyFrame)
-		return
-	end
-	
-	if frame == PetsFrame then
-		Healium.ShowPetsFrame = show
-		Healium_ShowPetsCheck:SetChecked(Healium.ShowPetsFrame)
 		return
 	end
 	
@@ -628,7 +603,6 @@ function Healium_ToggleAllFrames()
 	local hide = false
 
 	if PartyFrame:IsShown() then hide = true end
-	if PetsFrame:IsShown() then hide = true end
 	if MeFrame:IsShown() then hide = true end
 	if FriendsFrame:IsShown() then hide = true end
 	if DamagersFrame:IsShown() then hide = true end
@@ -649,7 +623,6 @@ function Healium_ToggleAllFrames()
 	
 	if hide then
 		PartyFrameWasShown = PartyFrame:IsShown()
-		PetsFrameWasShown = PetsFrame:IsShown()	
 		MeFrameWasShown = MeFrame:IsShown()
 		FriendsFrameWasShown = FriendsFrame:IsShown()
 		DamagersFrameWasShown = DamagersFrame:IsShown()		
@@ -662,7 +635,6 @@ function Healium_ToggleAllFrames()
 		end
 	
 		PartyFrame:Hide()
-		PetsFrame:Hide()
 		MeFrame:Hide()
 		FriendsFrame:Hide()
 		DamagersFrame:Hide()
@@ -686,7 +658,6 @@ function Healium_ToggleAllFrames()
 	-- after this point, we know we are showing frames
 	
 	if PartyFrameWasShown then PartyFrame:Show() end
-	if PetsFrameWasShown then PetsFrame:Show() end
 	if MeFrameWasShown then MeFrame:Show() end
 	if FriendsFrameWasShown then FriendsFrame:Show() end
 	if DamagersFrameWasShown then DamagersFrame:Show() end
@@ -706,7 +677,6 @@ function Healium_ToggleAllFrames()
 	
 	if IsAnyUnitFrameVisible() == nil then
 		PartyFrame:Show()
-		PetsFrame:Show()
 	end
 	
 	Healium_Print("Current frames are now shown.")	
@@ -720,17 +690,6 @@ function Healium_ShowHidePartyFrame(show)
 		PartyFrame:Show()
 	else
 		PartyFrame:Hide()
-	end
-end
-
-function Healium_ShowHidePetsFrame(show)
-	if InCombatLockdown() then return end
-	if (show ~= nil) then Healium.ShowPetsFrame = show end
-	
-	if Healium.ShowPetsFrame then
-		PetsFrame:Show()
-	else
-		PetsFrame:Hide()
 	end
 end
 
@@ -860,7 +819,6 @@ end
 
 function Healium_CreateUnitFrames()
 	PartyFrame = CreatePartyUnitFrame("HealiumPartyFrame", "Party")
-	PetsFrame = CreatePetUnitFrame("HealiumPetFrame", "Pets")
 	MeFrame = CreateMeUnitFrame("HealiumMeFrame", "Me")
 	FriendsFrame = CreateFriendsUnitFrame("HealiumFriendsFrame", "Friends")
 	DamagersFrame = CreateDamagersUnitFrame("HealiumDamagersFrame", "Damagers")
@@ -884,7 +842,6 @@ function Healium_SetScale()
 	local Scale = Healium.Scale
 	
 	PartyFrame:SetScale(Scale)
-	PetsFrame:SetScale(Scale)	
 	MeFrame:SetScale(Scale)
 	FriendsFrame:SetScale(Scale)
 	DamagersFrame:SetScale(Scale)

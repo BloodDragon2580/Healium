@@ -18,7 +18,7 @@ local function printUsage()
 	Healium_Print(Healium_AddonName .. " Commands")  
 	Healium_Print(Healium_Slash .. " - Shows " .. Healium_AddonName .. " commands.  (what you see here)")
 	Healium_Print(Healium_Slash .. " config - Shows the " .. Healium_AddonName .. " config panel")		
-	Healium_Print(Healium_Slash .. " show [party | pets | me | tanks | 1-8] - Shows the corresponding " .. Healium_AddonName .. " frame")
+	Healium_Print(Healium_Slash .. " show [party | me | tanks | 1-8] - Shows the corresponding " .. Healium_AddonName .. " frame")
 	Healium_Print(Healium_Slash .. " toggle - Shows or Hides the current " .. Healium_AddonName .. " frames.")
 	Healium_Print(Healium_Slash .. " reset frames - Resets the positions of all " .. Healium_AddonName .. " frames")	
 	Healium_Print(Healium_Slash .. " friends add [name or Target] - Adds name to the " .. Healium_AddonName .. " friends list.")	
@@ -85,7 +85,6 @@ local showHandlers = {
 	["7"] = function() Healium_ShowHideGroupFrame(7, true) end,
 	["8"] = function() Healium_ShowHideGroupFrame(8, true) end,
 	party = function() Healium_ShowHidePartyFrame(true) end,
-	pets = function() Healium_ShowHidePetsFrame(true) end,
 	me = function() Healium_ShowHideMeFrame(true) end,
 	friends = function() Healium_ShowHideFriendsFrame(true) end,
 	damagers = function() Healium_ShowHideDamagersFrame(true) end,

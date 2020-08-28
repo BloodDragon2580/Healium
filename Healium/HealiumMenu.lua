@@ -8,10 +8,6 @@ local function ShowMeFrame()
 	Healium_ShowHideMeFrame(true)
 end
 
-local function ShowPetsFrame()
-	Healium_ShowHidePetsFrame(true)
-end
-
 local function ShowDamagersFrame()
 	Healium_ShowHideDamagersFrame(true)
 end
@@ -236,11 +232,6 @@ local function HealiumMenu_InitializeDropDown(frame,level)
 					text = "Show Me",
 					notCheckable = 1,
 					func = ShowMeFrame,
-				},
-				{	-- Pet Frame
-					text = "Show Pets",
-					notCheckable = 1,					
-					func = ShowPetsFrame,
 				},
 				{	-- Friends Frame
 					text = "Show Friends",

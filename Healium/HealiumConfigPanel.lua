@@ -328,7 +328,7 @@ function Healium_CreateConfigPanel(Class, Version)
 	local TitleSubText = scrollchild:CreateFontString(nil, "OVERLAY","GameFontNormalSmall")
 	TitleSubText:SetJustifyH("LEFT")
 	TitleSubText:SetPoint("TOPLEFT", 10, -30)
-	TitleSubText:SetText("Welcome to the " .. Healium_AddonColoredName .. " options screen.|nUse the scrollbar to access more options.")
+	TitleSubText:SetText("Welcome to the " .. Healium_AddonColoredName .. " options screen.|nUse the scrollbar to access more options.|n|CFFFF9900Updatet by BloodDragon2580")
 	TitleSubText:SetTextColor(1,1,1,1) 
   
 	-- Create the Class Icon 
@@ -530,16 +530,8 @@ function Healium_CreateConfigPanel(Class, Version)
 		Healium_ShowHidePartyFrame()
     end)
 
-	-- Show Pets Check
-	Healium_ShowPetsCheck = CreateCheck("$parentShowPetsCheckButton",scrollchild,Healium_ShowPartyCheck, "Shows the Pets " .. Healium_AddonColoredName .. " frame.", "Pets")
-    
-    Healium_ShowPetsCheck:SetScript("OnClick",function()
-        Healium.ShowPetsFrame = Healium_ShowPetsCheck:GetChecked() or false
-		Healium_ShowHidePetsFrame()
-    end)
-
 	-- Show Me Check
-	Healium_ShowMeCheck = CreateCheck("$parentShowMeCheckButton",scrollchild,Healium_ShowPetsCheck, "Shows the Me " .. Healium_AddonColoredName .. " frame.", "Me")
+	Healium_ShowMeCheck = CreateCheck("$parentShowMeCheckButton",scrollchild,Healium_ShowPartyCheck, "Shows the Me " .. Healium_AddonColoredName .. " frame.", "Me")
     
     Healium_ShowMeCheck:SetScript("OnClick",function()
         Healium.ShowMeFrame = Healium_ShowMeCheck:GetChecked() or false
@@ -837,7 +829,7 @@ function Healium_CreateConfigPanel(Class, Version)
     
     local AboutFrame = CreateFrame("Frame","AboutHealium",scrollchild)
     AboutFrame:SetWidth(340)
-    AboutFrame:SetHeight(80)
+    AboutFrame:SetHeight(120)
     AboutFrame:SetPoint("TOPLEFT", AboutTitle.Text, "BOTTOMLEFT", 0, 0)
 
     AboutFrame:SetBackdrop({bgFile = "",
@@ -849,7 +841,7 @@ function Healium_CreateConfigPanel(Class, Version)
     AboutFrame.Text:SetWidth(330)
     AboutFrame.Text:SetJustifyH("LEFT")
     AboutFrame.Text:SetPoint("TOPLEFT", 7,-10)
-    AboutFrame.Text:SetText(Healium_AddonColoredName .. Version .. " |cFFFFFFFFCreated by Engee of Durotan.|n|n|cFFFFFFFFOriginally based on FB Heal Box, which was created by Dourd of Argent Dawn EU.")
+    AboutFrame.Text:SetText(Healium_AddonColoredName .. Version .. " |cFFFFFFFFCreated by Engee of Durotan.|n|n|CFFFF9900Updatet by BloodDragon2580|n|CFFFF9900He has Removed the Broken Pet Frames|n|n|cFFFFFFFFOriginally based on FB Heal Box, which was created by Dourd of Argent Dawn EU.")
 
 	-- Init Config Panel controls
 	if not IsClassic then 
@@ -891,7 +883,6 @@ function Healium_CreateConfigPanel(Class, Version)
 	Lib_UIDropDownMenu_SetText(SoundDropDown, Healium.DebufAudioFile)
 	
 	Healium_ShowPartyCheck:SetChecked(Healium.ShowPartyFrame)
-	Healium_ShowPetsCheck:SetChecked(Healium.ShowPetsFrame)
 	Healium_ShowMeCheck:SetChecked(Healium.ShowMeFrame)
 	Healium_ShowFriendsCheck:SetChecked(Healium.ShowFriendsFrame)
 

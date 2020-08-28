@@ -45,7 +45,6 @@ Healium = {
   UseClassColors = false,						-- Whether or not to color the healthbar the color of the class instead of green/yellow/red
   ShowDefaultPartyFrames = false,				-- Whether or not to show the default party frames
   ShowPartyFrame = true,						-- Whether or not to show the party frame
-  ShowPetsFrame = true,							-- Whether or not to show the pets frame
   ShowMeFrame = false,  						-- Whether or not to show the me frame
   ShowFriendsFrame = false,						-- Whether or not to show the friends frame
   ShowGroupFrames = { },  						-- Whether or not to show individual group frame
@@ -999,10 +998,6 @@ local function InitVariables()
 		Healium.ShowPartyFrame = true
 	end		
 	
-	if Healium.ShowPetsFrame == nil then
-		Healium.ShowPetsFrame = true
-	end
-	
 	if Healium.ShowMeFrame == nil then
 		Healium.ShowMeFrame = false
 	end
@@ -1300,7 +1295,6 @@ function Healium_OnEvent(frame, event, ...)
 		Healium_DebugPrint("PLAYER_LOGIN")  
 
 		Healium_ShowHidePartyFrame()
-		Healium_ShowHidePetsFrame()
 		Healium_ShowHideMeFrame()
 		Healium_ShowHideDamagersFrame()
 		Healium_ShowHideHealersFrame()
