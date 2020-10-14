@@ -259,4 +259,3 @@ function Healium_SlashCmdHandler(cmd)
 	local args = cmd:match("[^ ]+ (.+)")	
 	return handlers[switch](args)
 end
-

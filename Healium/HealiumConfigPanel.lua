@@ -304,11 +304,11 @@ function Healium_CreateConfigPanel(Class, Version)
 	scrollframe:Show()
 	
     scrollframe.scrollbar = _G["HealiumPanelScrollFrameScrollBar"]   
-    scrollframe.scrollbar:SetBackdrop({   
-        edgeFile = "Interface/Tooltips/UI-Tooltip-Border",   
-        edgeSize = 8,   
-        tileSize = 32,   
-        insets = { left = 0, right =0, top =5, bottom = 5 }})   
+    --scrollframe.scrollbar:SetBackdrop({   
+     --   edgeFile = "Interface/Tooltips/UI-Tooltip-Border",   
+      --  edgeSize = 8,   
+       -- tileSize = 32,   
+        --insets = { left = 0, right =0, top =5, bottom = 5 }})   
 	
 	
 	local scrollchild = CreateFrame("Frame", "$parentScrollChild", scrollframe)
@@ -832,10 +832,11 @@ function Healium_CreateConfigPanel(Class, Version)
     AboutFrame:SetHeight(120)
     AboutFrame:SetPoint("TOPLEFT", AboutTitle.Text, "BOTTOMLEFT", 0, 0)
 
-    AboutFrame:SetBackdrop({bgFile = "",
-    edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-    tile = true, tileSize = 16, edgeSize = 16,
-    insets = { left = 4, right = 4, top = 4, bottom = 4 }})
+	-- Background color setting is broken?
+    --AboutFrame:SetBackdrop({bgFile = "",
+    --edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
+    --tile = true, tileSize = 16, edgeSize = 16,
+    --insets = { left = 4, right = 4, top = 4, bottom = 4 }})
 
     AboutFrame.Text = AboutFrame:CreateFontString(nil, "BACKGROUND","GameFontNormal")
     AboutFrame.Text:SetWidth(330)
