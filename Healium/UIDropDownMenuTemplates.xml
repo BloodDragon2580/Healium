@@ -222,8 +222,6 @@
 				</Backdrop>
 				<Scripts>
 					<OnLoad>
-						--self:SetBackdropBorderColor(0, 0, 0);
-						--self:SetBackdropColor(0,0,0);
 					</OnLoad>
 				</Scripts>
 			</Frame>

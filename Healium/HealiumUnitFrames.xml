@@ -1,9 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
- 
-<!-- The main frame template -->	
-	<Frame name="HealiumUnitFrameTemplate" virtual="true" movable="true" parent="UIParent" hidden="true" enableMouse="true">
+ 	
+	<Frame name="HealiumUnitFrameTemplate" virtual="true" movable="true" parent="UIParent" hidden="false" enableMouse="true">
         <Size>
             <AbsDimension x="120" y="30"/>
         </Size>
@@ -70,10 +69,7 @@
 			<OnHide>HealiumUnitFrames_ShowHideFrame(self, false)</OnHide>
 		</Scripts>		
 	</Frame>
-	
 
-	<!-- A template for the healing buttons -->	
-	<!-- This can't have hidden="true" or it will fail to create unit frames during combat. -->
 	<Button name="HealiumHealButtonTemplate" inherits="SecureActionButtonTemplate" virtual="true" enableMouse="true">
 		<Size x="28" y ="28"/>
 		<Layers>
@@ -117,18 +113,7 @@
 			<OnDragStart function ="Healium_HealButton_OnDragStart" />
 		</Scripts>
 	</Button>
-
-
 	
-<!-- The unit frame template -->		
-<!-- WARNING
-			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			DO NOT SET hidden="true" here because it will cause creation of unit frames to fail during combat, and generate an 
-			"action blocked" message, and place an entry into taint.log about CreateFrame()
-			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--->			
 	<Button name="HealiumUnitFrames_ButtonTemplate" virtual="true" movable="true" enableMouse="true" inherits="SecureActionButtonTemplate">
 		<Size x="120" y="28"/>
 		<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
