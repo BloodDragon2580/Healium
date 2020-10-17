@@ -5,7 +5,7 @@
 -- Color control characters |CAARRGGBB  then |r resets to normal, where AA == Alpha, RR = Red, GG = Green, BB = blue
 
 Healium_Debug = false
-local AddonVersion = "|cFFFFFF00 3.0.5|r"
+local AddonVersion = "|cFFFFFF00 3.0.6|r"
 
 HealiumDropDown = {} -- the dropdown menus on the config panel
 
@@ -996,8 +996,8 @@ local function InitVariables()
 	
 	if Healium.ShowPartyFrame == nil then
 		Healium.ShowPartyFrame = true
-	end
-	
+	end		
+
 	if Healium.ShowMeFrame == nil then
 		Healium.ShowMeFrame = false
 	end

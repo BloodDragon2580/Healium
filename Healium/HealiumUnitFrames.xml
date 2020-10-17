@@ -53,12 +53,12 @@
 					end
 
 					self:SetBackdrop({
-					bgFile = "Interface\\TutorialFrame\\TutorialFrameBackground", 
-					edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-					tile = true,
-					tileSize = 32,
-					edgeSize = 16,
-					insets = {left = 5, right = 5, top = 5, bottom = 5},
+						bgFile = "Interface\\TutorialFrame\\TutorialFrameBackground", 
+						edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+						tile = true,
+						tileSize = 32,
+						edgeSize = 16,
+						insets = {left = 5, right = 5, top = 5, bottom = 5},
 					})
 				</OnLoad>
 				<OnEnter>HealiumUnitFrames_OnEnter(self)</OnEnter>
@@ -95,14 +95,19 @@
 				<Anchors>
 					<Anchor point="CENTER"></Anchor>
 				</Anchors>			
-					<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true"> 
-					<EdgeSize>
-						<AbsValue val="28"/> 
-					</EdgeSize>
-				   <BackgroundInsets>
-					  <AbsInset left="0" right="0" top="0" bottom="0"/> 
-				   </BackgroundInsets>
-				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						if BackdropTemplateMixin then
+							Mixin(self, BackdropTemplateMixin)
+						end
+
+						self:SetBackdrop({
+							edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+							edgeSize = 28,
+							insets = {left = 0, right = 0, top = 0, bottom = 0},
+						})				
+					</OnLoad>
+				</Scripts>
 			</Frame>	
 		</Frames>
 		<Attributes>
@@ -312,15 +317,18 @@
 				<Anchors>
 					<Anchor point="CENTER"></Anchor>
 				</Anchors>			
-				<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true"> 
-					<EdgeSize>
-						<AbsValue val="24"/> 
-					</EdgeSize>
-				   <BackgroundInsets>
-					  <AbsInset left="0" right="0" top="0" bottom="0"/> 
-				   </BackgroundInsets>
-				</Backdrop>
 				<Scripts>
+					<OnLoad>
+						if BackdropTemplateMixin then
+							Mixin(self, BackdropTemplateMixin)
+						end
+
+						self:SetBackdrop({
+							edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+							edgeSize = 24,
+							insets = {left = 0, right = 0, top = 0, bottom = 0},
+						})	
+					</OnLoad>				
 					<OnShow>
 						self:SetFrameLevel(self:GetParent():GetFrameLevel() + 4);
 					</OnShow>
@@ -331,15 +339,19 @@
 				<Anchors>
 					<Anchor point="CENTER"></Anchor>
 				</Anchors>			
-					<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true" > 
-					<EdgeSize>
-						<AbsValue val="12"/> 
-					</EdgeSize>
-				   <BackgroundInsets>
-					  <AbsInset left="0" right="0" top="0" bottom="0"/> 
-				   </BackgroundInsets>
-				</Backdrop>
 				<Scripts>
+					<OnLoad>
+						if BackdropTemplateMixin then
+							Mixin(self, BackdropTemplateMixin)
+						end
+						
+						self:SetBackdrop({
+							tile = true,
+							edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+							edgeSize = 12,
+							insets = {left = 0, right = 0, top = 0, bottom = 0},
+						})							
+					</OnLoad>
 					<OnShow>
 						self:SetFrameLevel(self:GetParent():GetFrameLevel() + 4);
 					</OnShow>
@@ -347,7 +359,21 @@
 			</Frame>						
 		</Frames>
 		<Scripts>
-			<OnLoad>HealiumUnitFrames_Button_OnLoad(self)</OnLoad>
+			<OnLoad>
+				if BackdropTemplateMixin then
+					Mixin(self, BackdropTemplateMixin)
+				end
+				
+				self:SetBackdrop({
+					tile = true,
+					tileSize = 16,				
+					edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+					edgeSize = 12,
+					insets = {left = 0, right = 0, top = 0, bottom = 0},
+				})		
+				
+				HealiumUnitFrames_Button_OnLoad(self)
+			</OnLoad>
 			<OnShow>HealiumUnitFrames_Button_OnShow(self)</OnShow>
 			<OnHide>HealiumUnitFrames_Button_OnHide(self)</OnHide>
 			<OnAttributeChanged>HealiumUnitFrames_Button_OnAttributeChanged(self, name, value)</OnAttributeChanged>
@@ -355,5 +381,4 @@
 			<OnMouseUp>HealiumUnitFrames_Button_OnMouseUp(self, button)</OnMouseUp>
 		</Scripts>
 	</Button>
-
 </Ui>
