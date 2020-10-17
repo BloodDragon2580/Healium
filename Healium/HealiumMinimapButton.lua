@@ -1,8 +1,8 @@
-local MiniMapTexture = "Interface/Icons/Spell_Holy_LayOnHands"
+local MiniMapTexture = "Interface/Icons/Spell_Holy_LayOnHands"  -- Holy Light
 
 function Healium_CreateMiniMapButton()
   local button = CreateFrame("Button", "HealiumMiniMap", Minimap)
-  button:SetFrameStrata("MEDIUM")
+  button:SetFrameStrata("MEDIUM") -- needed or else appears underneath
 
   button.icon = button:CreateTexture("icon","BACKGROUND")
   button.overlay = button:CreateTexture("icon","OVERLAY")
@@ -45,6 +45,7 @@ function Healium_CreateMiniMapButton()
     GameTooltip:Hide()
   end)
   
+  -- [ Lua Only Approach For Making Dragable Frames (With Right Mouse Only) ]
   button:SetMovable(true)
   button:EnableMouse(true)
   local OnMouseDown = function(frame) if(IsMouseButtonDown("RightButton")) then frame:StartMoving() end end

@@ -1,4 +1,4 @@
-Healium_Slash = "/hlm"
+Healium_Slash = "/hlm" -- the slash command 
 
 local function DumpVar(varName, Value)
 	if (Value == nil) then 
@@ -25,8 +25,12 @@ local function printUsage()
 	Healium_Print(Healium_Slash .. " friends remove [name or Target] - Removes name from the " .. Healium_AddonName .. " friends list.")		
 	Healium_Print(Healium_Slash .. " friends show - Shows the current " .. Healium_AddonName .. " friends list.")			
 	Healium_Print(Healium_Slash .. " friends clear - clears the " .. Healium_AddonName .. " friends list.")				
+--		Healium_Print(Slash .. " reset - Resets the ".. Healium_AddonName .. " UI")
+--		DEFAULT_CHAT_FRAME:AddMessage(Slash .. " debug - Toggles " .. Healium_AddonName .. " debugging")
+--		DEFAULT_CHAT_FRAME:AddMessage(Slash .. " dump - Outputs " .. Healium_AddonName .. " variables for debugging purposes")
 end
 
+-- handles /hlm reset 
 local function doReset(args)
 	if (args == "frames") then 
 		Healium_ResetAllFramePositions()
@@ -41,6 +45,7 @@ local function doReset(args)
 	end
 end
 
+-- handles /hlm debug
 local function doDebug(args)
 	Healium_Debug = not Healium_Debug
 	if (Healium_Debug) then
@@ -50,6 +55,7 @@ local function doDebug(args)
 	end
 end
 
+-- handles /hlm dump
 local function doDump(args)
 	if not IsAddOnLoaded("Blizzard_DebugTools") then
 		LoadAddOn("Blizzard_DebugTools")
@@ -58,6 +64,7 @@ local function doDump(args)
 	DevTools_Dump(Healium)
 end
 
+-- handles /hlm config
 local function doConfig(args)
 	Healium_ShowConfigPanel()
 end
@@ -89,6 +96,7 @@ local showHandlers = {
 
 setmetatable(showHandlers, mt)
 
+-- handles /hlm show
 local function doShow(args)
 	if args == nil then
 		Healium_ShowHidePartyFrame(true)
@@ -98,6 +106,9 @@ local function doShow(args)
 	return showHandlers[args]()
 end
 
+--[[ *************************************************************************************
+									TEST
+************************************************************************************* --]]
 local function doTest(args)
 	local _, unit, name, subgroup, className, role, server
 	if args == "roles" then
@@ -110,6 +121,12 @@ local function doTest(args)
 		end
 	end
 end
+
+
+--[[ *************************************************************************************
+									FRIENDS
+************************************************************************************* --]]
+
 
 local function GetFriendsTarget(args)
 	local friend = args
@@ -132,6 +149,7 @@ local function GetFriendsTarget(args)
 	return friend
 end
 
+-- handles /hlm friends add
 local function doFriendsAdd(args)
 	local friend = GetFriendsTarget(args)
 	
@@ -150,6 +168,7 @@ local function doFriendsAdd(args)
 	Healium_Print(friend .. " added to friends list") 
 end
 
+-- handles  /hlm friends remove
 local function doFriendsRemove(args)
 	local friend = GetFriendsTarget(args)
 	
@@ -180,6 +199,7 @@ local function doFriendsRemove(args)
 	Healium_Print(f .. " removed from friends list.") 
 end
 
+-- handles /hlm friends show
 local function doFriendsShow(args)
 	local friends = ""
 	local index = 1
@@ -206,6 +226,7 @@ local friendsHandlers = {
 
 setmetatable(friendsHandlers, mt)
 
+--handles /hlm friends
 local function doFriends(val)
 	if val == nil then
 		doFriendsShow()
@@ -232,6 +253,7 @@ local handlers = {
 
 setmetatable(handlers, mt)
 
+-- handles the slash commands for this addon
 function Healium_SlashCmdHandler(cmd)
 	local switch = cmd:match("([^ ]+)")
 	local args = cmd:match("[^ ]+ (.+)")	
