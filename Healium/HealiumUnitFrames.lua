@@ -658,7 +658,6 @@ function Healium_ToggleAllFrames()
 	-- after this point, we know we are showing frames
 	
 	if PartyFrameWasShown then PartyFrame:Show() end
-	if PetsFrameWasShown then PetsFrame:Show() end
 	if MeFrameWasShown then MeFrame:Show() end
 	if FriendsFrameWasShown then FriendsFrame:Show() end
 	if DamagersFrameWasShown then DamagersFrame:Show() end
@@ -678,7 +677,6 @@ function Healium_ToggleAllFrames()
 	
 	if IsAnyUnitFrameVisible() == nil then
 		PartyFrame:Show()
-		PetsFrame:Show()
 	end
 	
 	Healium_Print("Current frames are now shown.")	
