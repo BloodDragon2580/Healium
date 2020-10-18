@@ -37,6 +37,7 @@ local RejuvenationGermination = GetSpellInfo(155777) -- Rejuvenation (Germinatio
 local EternalFlame = GetSpellInfo(156322) -- Eternal Flame is a buff when a paladin with the Eternal Flame talent casts Word of Glory on a target
 local Atonement = GetSpellInfo(81749) -- Atonement: Plea, Power Word: Shield, Shadow Mend, and Power Word: Radiance also apply Atonement to your target for 15 sec.\
 local GlimmerOfLight = GetSpellInfo(325983) -- Glimmer of Light is a buff when a paladin with the Glimmer of Light talent casts Holy Shock
+local Tranquility = GetSpellInfo(740) -- Tranquility - HOT from Druid casting Tranquility
 
 -- sounds ids from https://wow.tools/files/#search=&page=1&sort=0&desc=asc
 Healium_Sounds = {
@@ -889,7 +890,7 @@ function Healium_UpdateUnitBuffs(unit, frame)
 					local armed = false
 					
 					for j=1, Profile.ButtonCount, 1 do
-						if Profile.SpellNames[j] == name or name == RejuvenationGermination or name == EternalFlame or name == Atonement or name == GlimmerOfLight then
+						if Profile.SpellNames[j] == name or name == RejuvenationGermination or name == EternalFlame or name == Atonement or name == GlimmerOfLight or name == Tranquility then
 							armed = true
 							break
 						end

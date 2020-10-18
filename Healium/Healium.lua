@@ -5,7 +5,7 @@
 -- Color control characters |CAARRGGBB  then |r resets to normal, where AA == Alpha, RR = Red, GG = Green, BB = blue
 
 Healium_Debug = false
-local AddonVersion = "|cFFFFFF00 3.0.8|r"
+local AddonVersion = "|cFFFFFF00 3.0.9|r"
 
 HealiumDropDown = {} -- the dropdown menus on the config panel
 
@@ -872,7 +872,7 @@ function Healium_RangeCheckButton(button)
 		if (button.id) then
 			local isUsable, noMana = IsUsableSpell(button.id, BOOKTYPE_SPELL)
 
-			if noMana then
+			if (not isUsable) or noMana then
 				button.icon:SetVertexColor(0.5, 0.5, 1.0)
 			else
 				if not button.icon.disabled then 
