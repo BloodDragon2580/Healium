@@ -5,7 +5,7 @@
 -- Color control characters |CAARRGGBB  then |r resets to normal, where AA == Alpha, RR = Red, GG = Green, BB = blue
 
 Healium_Debug = false
-local AddonVersion = "|cFFFFFF00 3.0.9|r"
+local AddonVersion = "|cFFFFFF00 3.1.0|r"
 
 HealiumDropDown = {} -- the dropdown menus on the config panel
 
@@ -1081,7 +1081,7 @@ local function InitVariables()
 	}
 
 	-- Make sure all Profile member tables exist. This is needed since new tables get added over various releases, and since Profiles variable gets saved/recalled by wow, the values may or may not exist depending on what verison of wow was last used when saving the variable.
-	for i = 1,4 do 
+	for i = 1,5 do
 		if Healium.Profiles[i] == nil then	
 			Healium.Profiles[i] = Healium_DeepCopy(DefaultProfile)
 		end

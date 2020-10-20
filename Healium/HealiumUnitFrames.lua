@@ -350,7 +350,7 @@ function HealiumUnitFrames_ShowHideFrame(frame, show)
 		Healium_ShowPartyCheck:SetChecked(Healium.ShowPartyFrame)
 		return
 	end
-	
+
 	if frame == MeFrame then
 		Healium.ShowMeFrame = show
 		Healium_ShowMeCheck:SetChecked(Healium.ShowMeFrame)

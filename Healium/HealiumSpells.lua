@@ -143,8 +143,8 @@ function Healium_InitSpells(class, race)
 		
 		else
 			-- retail
-			AddSpell(528)		-- Dispel Magic
 			AddSpell(527)		-- Purify		
+			AddSpell(213634)	-- Purify Disease (shadow spec)
 			AddSpell(139)		-- Renew
 			AddSpell(2061)		-- Flash Heal
 			AddSpell(2060)		-- Heal
@@ -161,6 +161,7 @@ function Healium_InitSpells(class, race)
 			AddSpell(2050)     	-- Holy Word: Serenity		
 			AddSpell(121135)	-- Cascade (not sure if correct Cascade)
 			AddSpell(2006)		-- Resurrection (rez)
+			AddSpell(194509)    -- Power Word: Radiance
 			
 	
 			-- Priest Purify, retail version
@@ -170,18 +171,16 @@ function Healium_InitSpells(class, race)
 					CanCureDisease = true,
 					CanCureMagic = true 
 				}
-			end			
+			end					
 			
-			-- Priest Dispel Magic, retail version
-			CureName = SpellName(528)
+			-- Priest Purify Disease, retail version
+			CureName = SpellName(213634)
 			if CureName then 
-				Cures[CureName] = {
-					CanCureMagic = true
+				Cures[CureName] = { 
+					CanCureDisease = true,
 				}
-			end			
+			end				
 		end
-		
-
 	end
 
 	if (class == "SHAMAN") then
