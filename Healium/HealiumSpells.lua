@@ -89,6 +89,9 @@ function Healium_InitSpells(class, race)
 			AddSpell(2782)		-- Remove Corruption
 			AddSpell(20484)		-- Rebirth (battle rez)
 			AddSpell(50769)		-- Revive (rez)
+			AddSpell(50464)     -- Nourish
+            AddSpell(203651)    -- Overgrowth
+            AddSpell(29166)     -- Innervate			
 			
 			-- Druid Remove Corruption, retail version.. retail version can cure poision too?
 			CureName = SpellName(2782) 
@@ -266,12 +269,12 @@ function Healium_InitSpells(class, race)
 			AddSpell(82326) -- Holy Light
 			AddSpell(85222)	-- Light of Dawn
 			AddSpell(82327)	-- Holy Radiance
-			AddSpell(114163)	-- Eternal Flame
-			AddSpell(114039)	-- Hand of Purity
-			AddSpell(114165)	-- Holy Prism
-			AddSpell(114916)	-- Execution Sentence
-			AddSpell(7328)		-- Redemption (rez)
-			AddSpell(183998) 	-- Light of the Martyr
+			AddSpell(114163) -- Eternal Flame
+			AddSpell(114039) -- Hand of Purity
+			AddSpell(114165) -- Holy Prism
+			AddSpell(114916) -- Execution Sentence
+			AddSpell(7328) -- Redemption (rez)
+			AddSpell(183998) -- Light of the Martyr
 			
 			-- Paladin Cleanse Toxins
 			CureName = SpellName(213644)
@@ -298,6 +301,16 @@ function Healium_InitSpells(class, race)
 	if (class == "MAGE") then
 		if IsClassic then 
 			-- Mage Remove Lesser Curse -- classic only
+			CureName = SpellName(475)
+			if CureName then 
+				Cures[CureName] = {	
+					CanCureCurse = true, 
+				}
+			end
+		else
+			-- Retail
+			AddSpell(475) -- Remove Curse
+
 			CureName = SpellName(475)
 			if CureName then 
 				Cures[CureName] = {	
