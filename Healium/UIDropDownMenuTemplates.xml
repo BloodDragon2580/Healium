@@ -195,45 +195,8 @@
 	
 	<Button name="Lib_UIDropDownListTemplate" hidden="true" frameStrata="DIALOG" enableMouse="true" virtual="true">
 		<Frames>
-			<Frame name="$parentBackdrop" parentKey="Border" setAllPoints="true">
-				<Scripts>
-					<OnLoad>
-						if BackdropTemplateMixin then
-							Mixin(self, BackdropTemplateMixin)
-						end
-						
-						self:SetBackdrop({
-							tile = true,
-							bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark",
-							tileSize  = 32,
-							edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border", 
-							edgeSize = 32,
-							insets = {left = 5, right = 5, top = 5, bottom = 5},
-						})							
-					</OnLoad>
-				</Scripts>				
-			</Frame>
-			<Frame name="$parentMenuBackdrop" setAllPoints="true">
-				<Scripts>
-					<OnLoad>
-						if BackdropTemplateMixin then
-							Mixin(self, BackdropTemplateMixin)
-						end
-						
-						self:SetBackdrop({
-							tile = true,
-							bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-							tileSize  = 16,
-							edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-							edgeSize = 16,
-							insets = {left = 5, right = 5, top = 5, bottom = 4},
-						})							
-						
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);						
-					</OnLoad>			
-				</Scripts>									
-			</Frame>
+			<Frame name="$parentBackdrop" parentKey="Border" inherits="DialogBorderDarkTemplate"/>
+			<Frame name="$parentMenuBackdrop" setAllPoints="true" inherits="TooltipBackdropTemplate"/>
 			<Button name="$parentButton1" inherits="Lib_UIDropDownMenuButtonTemplate" id="1"/>
 			<Button name="$parentButton2" inherits="Lib_UIDropDownMenuButtonTemplate" id="2"/>
 			<Button name="$parentButton3" inherits="Lib_UIDropDownMenuButtonTemplate" id="3"/>
