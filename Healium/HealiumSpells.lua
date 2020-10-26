@@ -89,6 +89,9 @@ function Healium_InitSpells(class, race)
 			AddSpell(2782)		-- Remove Corruption
 			AddSpell(20484)		-- Rebirth (battle rez)
 			AddSpell(50769)		-- Revive (rez)
+			AddSpell(50464)     -- Nourish
+            AddSpell(203651)    -- Overgrowth
+            AddSpell(29166)     -- Innervate			
 			
 			-- Druid Remove Corruption, retail version.. retail version can cure poision too?
 			CureName = SpellName(2782) 
