@@ -5,7 +5,7 @@
 -- Color control characters |CAARRGGBB  then |r resets to normal, where AA == Alpha, RR = Red, GG = Green, BB = blue
 
 Healium_Debug = false
-local AddonVersion = "|cFFFFFF00 3.1.5|r"
+local AddonVersion = "|cFFFFFF00 3.1.6|r"
 
 HealiumDropDown = {} -- the dropdown menus on the config panel
 
@@ -29,6 +29,10 @@ local ActivatePrimarySpecSpellName = GetSpellInfo(63645)
 local ActivateSecondarySpecSpellName = GetSpellInfo(63644) 
 local PWSName = GetSpellInfo(17) -- Power Word: Shield
 local WeakendSoulName = GetSpellInfo(6788) -- Weakened Soul
+local SwiftMendName = GetSpellInfo(18562) -- Swift Mend
+local RejuvinationName = GetSpellInfo(774) -- Rejuvenation
+local RegrowthName = GetSpellInfo(8936) -- Regrowth
+local WildGrowthName = GetSpellInfo(48438) -- Wild Growth
 
 --local LoadedTime = 0
 local stable
@@ -648,6 +652,43 @@ function Healium_UpdateSpecialBuffs(unit)
 		end
 		return
 	end
+	
+	if HealiumClass == "DRUID" then
+		local Profile = Healium_GetProfile()
+		
+		for i=1, Profile.ButtonCount, 1 do				
+		
+			-- special check for Swift Mend	
+			if Profile.SpellNames[i] == SwiftMendName then 
+				local units = Healium_Units[unit]
+
+				if units then 	
+					local buff1 = AuraUtil.FindAuraByName(RejuvinationName, unit)
+					local buff2 = AuraUtil.FindAuraByName(RegrowthName, unit)
+					local buff3 = AuraUtil.FindAuraByName(WildGrowthName, unit)
+
+					local enabled = buff1 or buff2 or buff3
+					
+					for _, frame in pairs(units) do 
+						local button = frame.buttons[i]
+						if button then
+							if enabled then 
+								button.icon.disabled = nil
+								button.icon:SetVertexColor(1.0, 1.0, 1.0)
+							else
+								button.icon.disabled = true
+								button.icon:SetVertexColor(0.4, 0.4, 0.4)
+							end
+						end
+					end
+					
+
+				end
+			end
+		end
+		return
+		
+	end	
 
 end
 
@@ -872,7 +913,7 @@ function Healium_RangeCheckButton(button)
 		if (button.id) then
 			local isUsable, noMana = IsUsableSpell(button.id, BOOKTYPE_SPELL)
 
-			if (not isUsable) or noMana then
+			if noMana then
 				button.icon:SetVertexColor(0.5, 0.5, 1.0)
 			else
 				if not button.icon.disabled then 
