@@ -17,3 +17,6 @@ Because the addon author published Healium as 'all rights reserved,' Twitch/Curs
 Please do file and bug reports or feature requests, and I'll take a look at them! When you do, please be as specific as possible and include screenshots if you're able. I don't actively use Healium myself, so I'm not as familiar with some of its intricacies or functionality as you guys who use it day to day. I'm happy to try to make fixes or improvements, but any help you can lend me is greatly appreciated.
 
 One other note: while I'll do my best to keep this addon updated through further Blizzard API changes, I do have a job, family, and raid that come first for me, so please accept my apologies if your bug report or improvement request goes unseen for a bit. I'll do my best to get to it as soon as I'm able. Thanks!
+
+
+Download Count https://hanadigital.github.io/grev/?user=BloodDragon2580&repo=Healium
